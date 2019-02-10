@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Toggle</title>
+    <style type="text/css">
+		div,h1,h2,h3,h4,p,ul,li,form,input,img{ margin:0;padding:0; }
+		img{ border:0; display:block; }
+		a{ text-decoration:none; color:#000000; }
+		ul,li{ list-style:none; }
+		
+		#header{ width:320px; height:800px; background:url(images/bg.png) repeat; }
+		.logo{ display:block; width:90px; height:60px; float:left; } .logo a{ display:block; background:url(images/logo.png) no-repeat; border:0; text-indent:-99999px; }
+		#toggle_btn{ display:block; width:32px; height:32px; position:fixed; cursor:pointer; left:150px; top:14px; } #toggle_btn span{ width:100%; height:1px; display:block; background:#1b1b59; position:absolute; }
+		#toggle_btn span:nth-of-type(1){width:80%; top:0;}
+		#toggle_btn span:nth-of-type(2){width:90%; top:14px;}
+		#toggle_btn span:nth-of-type(3){width:100%; top:29px;} .gnb{ /*display:none;*/ }
+		.gnb li a{ font-size:14px; } .gnb li{ width:;height:; }
+		#search{ float:left; }
+	</style>
+</head>
+<body>
+	<div id="header">
+        <h1 class="logo"><a href="#">logo</a></h1>
+        <p id="toggle_btn"><span></span><span></span><span></span></p>
+        <ul class="gnb">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Headphone</a>
+                <ul class="sub">
+                    <li><a href="#">ON-01</a></li>
+                    <li><a href="#">ON-02</a></li>
+                    <li><a href="#">ON-03</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Earphone</a>
+                <ul class="sub">
+                    <li><a href="#">ON-04</a></li>
+                    <li><a href="#">ON-05</a></li>
+                    <li><a href="#">ON-06</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Speaker</a>
+                <ul class="sub">
+                    <li><a href="#">ON-07</a></li>
+                    <li><a href="#">ON-08</a></li>
+                    <li><a href="#">ON-09</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Support</a>
+                <ul class="sub">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Event</a></li>
+                </ul>
+            </li>
+        </ul>
+        <script type="text/javascript">
+            $('#toggle_btn').on('click', function() {
+                $('.gnb').toggle(); 
+            });
+        </script>
+        <div class="searchWrap">
+            <div id="search">
+            <img src="images/sistrix.svg" alt="찾기 버튼" width="31" height="25" class="imgSelect" />
+			</div><!-- 버튼 이미지 -->
+
+            <div id="formWrap">
+                <div style="position:absolute;top:29px;">
+                    <!-- 폼 상자의 스타일 -->
+                    <form action="javascript:alert( '검색!' );">
+                        <div>
+                            <input type="text" class="text" placeholder="검색">
+                            <input type="image" name="imageinput" src="images/sistrix.svg" width="31" height="25" alt="검색">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- 폼 레이어  -->
+
+            <script type="text/javascript">
+                $('#search').click(function(e) {
+                    $('#formWrap').toggle();
+                });
+
+            </script>
+        </div>
+        <!-- searchWrap end -->
+    </div>
+    <!-- header end -->
+
+
+
+</body>
+</html>
