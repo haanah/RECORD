@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Toggle</title>
+    <title>Mobile Menu</title>
     <style type="text/css">
 		div,h1,h2,h3,h4,p,ul,li,form,input,img{ margin:0;padding:0; }
 		img{ border:0; display:block; }
@@ -10,20 +10,25 @@
 		ul,li{ list-style:none; }
 		
 		#header{ width:320px; height:800px; background:url(images/bg.png) repeat; }
-		.logo{ display:block; width:90px; height:60px; float:left; } .logo a{ display:block; background:url(images/logo.png) no-repeat; border:0; text-indent:-99999px; }
-		#toggle_btn{ display:block; width:32px; height:32px; position:fixed; cursor:pointer; left:150px; top:14px; } #toggle_btn span{ width:100%; height:1px; display:block; background:#1b1b59; position:absolute; }
+		.logo{ display:block; width:90px; height:60px; float:left; } .logo a{ display:block; width:90px; height:60px; background:url(images/logo.png) no-repeat; border:0; text-indent:-99999px; }
+		#toggle_btn{ display:block; width:32px; height:32px; position:absolute; cursor:pointer; left:150px; top:25px; } #toggle_btn span{ width:100%; height:1px; display:block; background:#1b1b59; position:absolute; }
 		#toggle_btn span:nth-of-type(1){width:80%; top:0;}
 		#toggle_btn span:nth-of-type(2){width:90%; top:14px;}
-		#toggle_btn span:nth-of-type(3){width:100%; top:29px;} .gnb{ /*display:none;*/ }
-		.gnb li a{ font-size:14px; } .gnb li{ width:;height:; }
-		#search{ float:left; }
+		#toggle_btn span:nth-of-type(3){width:100%; top:29px;} #gnb{ display:none; width:320px; height:600px; float:left; }
+		#gnb > li a{ font-size:14px; display:block; } #gnb > li{ width:100%; height:50px; line-height:50px; position:relative; }
+		.searchWrap{ float:right; position:relative; }
+		#search{ cursor:pointer; } #formWrap{ position:absolute; width:320px; height:50px; }
+		.sub{ position:absolute; left:100px; top:30px; width:100%; height:50px; display:none; }
+		.sub li{ width:100px; height:50px; }
+		#gnb.show{ display:block; }
 	</style>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
 	<div id="header">
         <h1 class="logo"><a href="#">logo</a></h1>
         <p id="toggle_btn"><span></span><span></span><span></span></p>
-        <ul class="gnb">
+        <ul id="gnb">
             <li><a href="#">About Us</a></li>
             <li><a href="#">Headphone</a>
                 <ul class="sub">
@@ -54,10 +59,22 @@
                 </ul>
             </li>
         </ul>
-        <script type="text/javascript">
-            $('#toggle_btn').on('click', function() {
-                $('.gnb').toggle(); 
+        <script type="text/javascript">	
+            $('#toggle_btn').on('click', function(e) {
+				e.preventDefault();
+				if($('#gnb').attr('class') == 'show'){
+					$('#gnb').removeClass('show');
+				}else{
+					$('#gnb').addClass('show');
+				};     
             });
+			$('#gnb').on('click',function(e){
+				e.preventDefault();
+				$('#gnb').removeClass('show'); 
+			});	 
+			$('#gnb>li').on('click',function(){
+				
+			})
         </script>
         <div class="searchWrap">
             <div id="search">
