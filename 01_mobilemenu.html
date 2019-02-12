@@ -21,6 +21,7 @@
 		.sub{ position:absolute; left:100px; top:30px; width:100%; height:50px; display:none; }
 		.sub li{ width:100px; height:50px; }
 		#gnb.show{ display:block; }
+		.sub.show{ display:block; }
 	</style>
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
@@ -68,13 +69,18 @@
 					$('#gnb').addClass('show');
 				};     
             });
-			$('#gnb').on('click',function(e){
+			/*$('#gnb').on('click',function(e){
 				e.preventDefault();
 				$('#gnb').removeClass('show'); 
-			});	 
-			$('#gnb>li').on('click',function(){
-				
-			})
+			});*/	 
+			$('#gnb>li').on('click',function(e){
+				e.preventDefault();
+				if($('.sub').attr('class') == 'show'){
+					$('.sub').removeClass('show');
+				}else{
+					$('.sub').addClass('show');
+				};
+			});
         </script>
         <div class="searchWrap">
             <div id="search">
