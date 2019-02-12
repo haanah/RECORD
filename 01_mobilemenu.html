@@ -11,15 +11,15 @@
 		
 		#header{ width:320px; height:800px; background:url(images/bg.png) repeat; }
 		.logo{ display:block; width:90px; height:60px; float:left; } .logo a{ display:block; width:90px; height:60px; background:url(images/logo.png) no-repeat; border:0; text-indent:-99999px; }
-		#toggle_btn{ display:block; width:32px; height:32px; position:absolute; cursor:pointer; left:150px; top:25px; } #toggle_btn span{ width:100%; height:1px; display:block; background:#1b1b59; position:absolute; }
+		#toggle_btn{ display:block; width:32px; height:32px; position:absolute; cursor:pointer; left:250px; top:25px; } #toggle_btn span{ width:100%; height:1px; display:block; background:#1b1b59; position:absolute; }
 		#toggle_btn span:nth-of-type(1){width:80%; top:0;}
 		#toggle_btn span:nth-of-type(2){width:90%; top:14px;}
 		#toggle_btn span:nth-of-type(3){width:100%; top:29px;} #gnb{ display:none; width:320px; height:600px; float:left; }
-		#gnb > li a{ font-size:14px; display:block; } #gnb > li{ width:100%; height:50px; line-height:50px; position:relative; }
-		.searchWrap{ float:right; position:relative; }
-		#search{ cursor:pointer; } #formWrap{ position:absolute; width:320px; height:50px; }
-		.sub{ position:absolute; left:100px; top:30px; width:100%; height:50px; display:none; }
-		.sub li{ width:100px; height:50px; }
+		#gnb > li a{ font-size:14px; display:block; } #gnb > li{ width:100%; height:50px; line-height:50px; }
+		.searchWrap{ position:absolute; left:285px; top:30px }
+		#search{ cursor:pointer; } #formWrap{ position:relative; width:320px; height:50px; right:180px; top:12px; display:none; overflow:hidden; }
+		.sub{ width:100%; height:50px; display:none; }
+		.sub li{ width:100px; height:50px; float:left; text-align:center; }
 		#gnb.show{ display:block; }
 		.sub.show{ display:block; }
 	</style>
@@ -68,19 +68,16 @@
 				}else{
 					$('#gnb').addClass('show');
 				};     
-            });
-			/*$('#gnb').on('click',function(e){
-				e.preventDefault();
-				$('#gnb').removeClass('show'); 
-			});*/	 
-			$('#gnb>li').on('click',function(e){
-				e.preventDefault();
-				if($('.sub').attr('class') == 'show'){
-					$('.sub').removeClass('show');
+            });	 
+			$('#gnb>li').on('click',function(){
+				if($(this).find('.sub').css('display')=='none'){
+					$('.sub').slideUp(350);
+					$(this).find('.sub').slideDown(350);
 				}else{
-					$('.sub').addClass('show');
-				};
+					$(this).find('.sub').slideUp(350);
+				}
 			});
+				
         </script>
         <div class="searchWrap">
             <div id="search">
@@ -88,7 +85,7 @@
 			</div><!-- 버튼 이미지 -->
 
             <div id="formWrap">
-                <div style="position:absolute;top:29px;">
+                <div>
                     <!-- 폼 상자의 스타일 -->
                     <form action="javascript:alert( '검색!' );">
                         <div>
